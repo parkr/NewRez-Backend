@@ -1,3 +1,4 @@
+<?php include_once('functions.inc.php'); ?>
 <div class="floorFellows index">
 	<h2><?php __('Floor Fellows');?></h2>
 	<table cellpadding="0" cellspacing="0">
@@ -24,7 +25,7 @@
 	?>
 	<tr<?php echo $class;?>>
 		<td><?php echo $floorFellow['FloorFellow']['floor']; ?>&nbsp;</td>
-		<td><?php echo $floorFellow['FloorFellow']['name']; ?>&nbsp;</td>
+		<td><?php echo $floorFellow['FloorFellow']['name']; ?><br><br><?php echo $this->Html->image("http://static.newrez.ca/ffs/".getMiniName($floorFellow['FloorFellow']['image_name']), array('width'=>60, 'alt'=> $floorFellow['FloorFellow']['name']." - Mini")); ?><br>(mini)&nbsp;</td>
 		<td><?php echo $this->Html->image("http://static.newrez.ca/ffs/".$floorFellow['FloorFellow']['image_name'], array('width'=>150, 'alt'=> $floorFellow['FloorFellow']['name'])); ?>&nbsp;</td>
 		<td><?php echo $floorFellow['FloorFellow']['faculty_major']; ?>&nbsp;</td>
 		<td><?php echo $floorFellow['FloorFellow']['u_status']; ?>&nbsp;</td>

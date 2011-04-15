@@ -1,3 +1,4 @@
+<?php include_once('functions.inc.php'); ?>
 <div class="councillors index">
 	<h2><?php __('Councillors');?></h2>
 	<table cellpadding="0" cellspacing="0">
@@ -24,7 +25,7 @@
 	?>
 	<tr<?php echo $class;?>>
 		<td><?php echo $councillor['Councillor']['position']; ?>&nbsp;</td>
-		<td><?php echo $councillor['Councillor']['name']; ?>&nbsp;</td>
+		<td><?php echo $councillor['Councillor']['name']; ?><br><br><?php echo $this->Html->image("http://static.newrez.ca/councillors/".getMiniName($councillor['Councillor']['image_name']), array('width'=>60, 'alt'=> $councillor['Councillor']['name']." - Mini")); ?><br>(mini)&nbsp;</td>
 		<td><?php echo $this->Html->image("http://static.newrez.ca/councillors/".$councillor['Councillor']['image_name'], array('width'=>150, 'alt'=> $councillor['Councillor']['name'])); ?>&nbsp;</td>
 		<td><?php echo $councillor['Councillor']['faculty_major']; ?>&nbsp;</td>
 		<td><?php echo $councillor['Councillor']['u0_u1_status']; ?>&nbsp;</td>
