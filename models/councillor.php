@@ -53,6 +53,26 @@ class Councillor extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'has_photo' => array(
+					'boolean' => array(
+						'rule' => array('boolean'),
+						//'message' => 'Your custom message here',
+						//'allowEmpty' => false,
+						//'required' => false,
+						//'last' => false, // Stop validation after this rule
+						//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 	);
+	
+	function getMiniName($image){
+		$new_name_parts = explode('.', $image);
+		$new_name = "";
+		for($i=0; $i<count($new_name_parts)-1; $i++){
+			$new_name .= $new_name_parts[$i];
+		}
+		$new_name .= "_mini.jpg";
+		return $new_name;
+	}
 }
 ?>

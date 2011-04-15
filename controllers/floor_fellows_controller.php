@@ -34,9 +34,11 @@ class FloorFellowsController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
-			move_uploaded_file($this->data["FloorFellow"]["image_name"]["tmp_name"], "/home/parkrm04/public_html/newrez.ca/wordpress/wp-content/uploads/ffs/" . $this->data["FloorFellow"]["image_name"]["name"]);
-			$this->data["FloorFellow"]["image_name"] = $this->data["FloorFellow"]["image_name"]["name"];
-			$this->_createMiniImage("/home/parkrm04/public_html/newrez.ca/wordpress/wp-content/uploads/ffs/", $this->data["FloorFellow"]["image_name"]);
+			if($this->data["FloorFellow"]["image"]["tmp_name"] != ""){
+				move_uploaded_file($this->data["FloorFellow"]["image"]["tmp_name"], "/home/parkrm04/public_html/newrez.ca/wordpress/wp-content/uploads/ffs/" . $this->data["FloorFellow"]["image"]["name"]);
+				$this->data["FloorFellow"]["image_name"] = $this->data["FloorFellow"]["image"]["name"];
+				$this->_createMiniImage("/home/parkrm04/public_html/newrez.ca/wordpress/wp-content/uploads/ffs/", $this->data["FloorFellow"]["image_name"]);
+			}
 			if ($this->FloorFellow->save($this->data)) {
 				$this->Session->setFlash(__('The floor fellow has been saved', true));
 				$this->redirect(array('action' => 'index'));
@@ -46,6 +48,7 @@ class FloorFellowsController extends AppController {
 		}
 		if (empty($this->data)) {
 			$this->data = $this->FloorFellow->read(null, $id);
+			$this->set('image_name', $this->data["FloorFellow"]["image_name"]);
 		}
 	}
 	
@@ -115,12 +118,7 @@ class FloorFellowsController extends AppController {
 	      imagecopyresized( $tmp_img, $img, 0, 0, 0, 0, $width, $height, $width, $height );
 
 		  // create new image name - it's a copy after all
-		  $new_name_parts = explode('.', $image);
-		  $new_name = "";
-		  for($i=0; $i<count($new_name_parts)-1; $i++){
-			  $new_name .= $new_name_parts[$i];
-		  }
-		  $new_name .= "_mini.jpg";
+		  $new_name = $this->FloorFellow->getMiniName($image);
 		
 	      // save thumbnail into a file
 	      imagejpeg( $tmp_img, "{$path}{$new_name}" );

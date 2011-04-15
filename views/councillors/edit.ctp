@@ -1,11 +1,13 @@
 <div class="councillors form">
-<?php echo $this->Form->create('Councillor');?>
+<?php echo $this->Form->create('Councillor', array('enctype' => 'multipart/form-data'));?>
 	<fieldset>
 		<legend><?php echo "Edit ".$this->Form->value('Councillor.position') ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->hidden('position');
 		echo $this->Form->input('name');
+		echo $this->Form->file('image');
+		echo $this->Form->hidden('image_name');
 		echo $this->Form->input('faculty_major');
 		echo $this->Form->input('u0_u1_status');
 		echo $this->Form->input('theme_song');

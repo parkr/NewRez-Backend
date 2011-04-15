@@ -5,7 +5,8 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');
-		echo $this->Form->file('image_name');
+		echo $this->Form->file('image');
+		echo $this->Form->hidden('image_name');
 		echo $this->Form->input('faculty_major');
 		echo $this->Form->input('u_status');
 		echo $this->Form->hidden('floor');

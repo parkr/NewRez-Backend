@@ -4,6 +4,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('position');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
+			<th><?php echo $this->Paginator->sort('image_name');?></th>
 			<th><?php echo $this->Paginator->sort('faculty_major');?></th>
 			<th><?php echo $this->Paginator->sort('u0_u1_status');?></th>
 			<th><?php echo $this->Paginator->sort('theme_song');?></th>
@@ -24,16 +25,18 @@
 	<tr<?php echo $class;?>>
 		<td><?php echo $councillor['Councillor']['position']; ?>&nbsp;</td>
 		<td><?php echo $councillor['Councillor']['name']; ?>&nbsp;</td>
+		<td><?php echo $this->Html->image("http://static.newrez.ca/councillors/".$councillor['Councillor']['image_name'], array('width'=>150, 'alt'=> $councillor['Councillor']['name'])); ?>&nbsp;</td>
 		<td><?php echo $councillor['Councillor']['faculty_major']; ?>&nbsp;</td>
 		<td><?php echo $councillor['Councillor']['u0_u1_status']; ?>&nbsp;</td>
 		<td><?php echo $councillor['Councillor']['theme_song']; ?>&nbsp;</td>
 		<td><?php echo $councillor['Councillor']['grow_up']; ?>&nbsp;</td>
 		<td><?php echo $councillor['Councillor']['meaning_of_life']; ?>&nbsp;</td>
 		<td><?php echo $councillor['Councillor']['million_dollars']; ?>&nbsp;</td>
-		<td><?php echo ($councillor['Councillor']['has_photo'] == 1) ? "Yes" : "No"; ?>&nbsp;</td>
+		<td><?php echo $councillor['Councillor']['has_photo']; ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $councillor['Councillor']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $councillor['Councillor']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit Mini', true), array('action' => 'edit_mini', $councillor['Councillor']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

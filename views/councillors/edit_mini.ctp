@@ -32,7 +32,7 @@
 		}else{
 			if(save_committed){
 				var e = document.getElementById('EditMini');
-				var url = '/add/floor_fellows/steal_mini/id:'+id+'/'+e.src.substr(7);
+				var url = '/add/councillors/steal_mini/id:'+id+'/'+e.src.substr(7);
 				window.location = url;
 			}else{
 				alert("You have to save it or make adjustments first!")
@@ -41,32 +41,32 @@
 	}
 </script> 
 <script type="text/javascript" src="http://feather.aviary.com/js/feather.js"></script>
-<div class="floorFellows view">
-<h2><?php  __('Floor Fellow');?></h2>
+<div class="councillors view">
+<h2><?php  __('Councillor');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Name'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $floorFellow['FloorFellow']['name']; ?>
+			<?php echo $councillor['Councillor']['name']; ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Image Name'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $floorFellow['FloorFellow']['image_name']; ?>
+			<?php echo $councillor['Councillor']['image_name']; ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Mini Image'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->Html->image("http://static.newrez.ca/ffs/".$floorFellow['FloorFellow']['mini_image_name'], array('alt'=> $floorFellow['FloorFellow']['name'], 'id'=>'EditMini')); ?>
+			<?php echo $this->Html->image("http://static.newrez.ca/councillors/".$councillor['Councillor']['mini_image_name'], array('alt'=> $councillor['Councillor']['name'], 'id'=>'EditMini')); ?>
 			&nbsp;
 			<p><input type="image" src="http://www.aviary.com/images/feather/edit-photo.png" value="Edit Photo" onclick="launchEditor('EditMini'); return false;" style="width:100px;" /></p>
 		</dd>
 	</dl>
-	PRESS ME: <h1 style='font-size:30px;'><a href="#" onclick='saveToMyServer("<?php echo $floorFellow['FloorFellow']['id']; ?>")'>SAVE TO THE SERVER</a></h1>
+	PRESS ME: <h1 style='font-size:30px;'><a href="#" onclick='saveToMyServer("<?php echo $councillor['Councillor']['id']; ?>")'>SAVE TO THE SERVER</a></h1>
 </div>
 <div class="actions">
 	<h3><?php __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Floor Fellow', true), array('action' => 'edit', $floorFellow['FloorFellow']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Floor Fellows', true), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit Councillor', true), array('action' => 'edit', $councillor['Councillor']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Councillors', true), array('action' => 'index')); ?> </li>
 	</ul>
 </div>
