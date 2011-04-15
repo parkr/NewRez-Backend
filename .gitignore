@@ -1,0 +1,6 @@
+tmp/*
+vendors/*
+tests/*
+*error_log
+*.log
+*database.php
